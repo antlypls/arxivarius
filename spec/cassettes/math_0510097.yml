@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://export.arxiv.org/api/query?id_list=math/0510097
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - export.arxiv.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2206'
+      X-Cloud-Trace-Context:
+      - bc53444b10f3e8d6a50522dd9d8465c6
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Server:
+      - Google Frontend
+      Via:
+      - 1.1 varnish, 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '453'
+      Date:
+      - Tue, 30 Dec 2025 01:13:36 GMT
+      X-Served-By:
+      - cache-lga21949-LGA, cache-lga21946-LGA, cache-fra-etou8220063-FRA
+      X-Cache:
+      - MISS, MISS, HIT
+      X-Cache-Hits:
+      - 0, 0, 0
+      X-Timer:
+      - S1771895617.579260,VS0,VE1
+      Strict-Transport-Security:
+      - max-age=300
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='UTF-8'?>
+        <feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+          <id>https://arxiv.org/api/8Sb57OGBbuu8Xj/Rw54Yq61CoHo</id>
+          <title>arXiv Query: search_query=&amp;id_list=math/0510097&amp;start=0&amp;max_results=10</title>
+          <updated>2025-12-30T01:06:03Z</updated>
+          <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=math/0510097" type="application/atom+xml"/>
+          <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+          <opensearch:totalResults>1</opensearch:totalResults>
+          <opensearch:startIndex>0</opensearch:startIndex>
+          <entry>
+            <id>http://arxiv.org/abs/math/0510097v1</id>
+            <title>The differential topology of loop spaces</title>
+            <updated>2005-10-05T14:36:55Z</updated>
+            <link href="https://arxiv.org/abs/math/0510097v1" rel="alternate" type="text/html"/>
+            <link href="https://arxiv.org/pdf/math/0510097v1" rel="related" type="application/pdf" title="pdf"/>
+            <summary>  This is an introduction to the subject of the differential topology of the space of smooth loops in a finite dimensional manifold. It began as the background notes to a series of seminars given at NTNU and subsequently at Sheffield. I am posting them in the hope that they will be useful to people wishing to know a little about the basics of the subject. I have tried to make them readable by anyone with a good grounding in finite dimensional differential topology. Any comments and suggestions for improvement will be very welcome.
+          The topics covered are: the smooth structure of the space of smooth loops; constructions involving vector bundles; submanifolds and tubular neighbourhoods; and a short introduction to the geometry and semi-infinite structure of loop spaces.</summary>
+            <category term="math.DG" scheme="http://arxiv.org/schemas/atom"/>
+            <category term="math.AT" scheme="http://arxiv.org/schemas/atom"/>
+            <published>2005-10-05T14:36:55Z</published>
+            <arxiv:comment>55 pages</arxiv:comment>
+            <arxiv:primary_category term="math.DG"/>
+            <author>
+              <name>Andrew Stacey</name>
+            </author>
+          </entry>
+        </feed>
+  recorded_at: Tue, 30 Dec 2025 01:13:36 GMT
+recorded_with: VCR 6.4.0

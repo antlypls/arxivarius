@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://export.arxiv.org/api/query?id_list=2601.00470
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - export.arxiv.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3298'
+      X-Cloud-Trace-Context:
+      - fef32750fcb777d73628f5e2a13ef33b
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Server:
+      - Google Frontend
+      Via:
+      - 1.1 varnish, 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '986'
+      Date:
+      - Tue, 06 Jan 2026 12:39:14 GMT
+      X-Served-By:
+      - cache-lga21982-LGA, cache-lga21938-LGA, cache-fra-etou8220061-FRA
+      X-Cache:
+      - MISS, MISS, HIT
+      X-Cache-Hits:
+      - 0, 0, 0
+      X-Timer:
+      - S1771970985.761668,VS0,VE1
+      Strict-Transport-Security:
+      - max-age=300
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='UTF-8'?>
+        <feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+          <id>https://arxiv.org/api/aQFqdnLChwBz2MPxJncLXIwP0S4</id>
+          <title>arXiv Query: search_query=&amp;id_list=2601.00470&amp;start=0&amp;max_results=10</title>
+          <updated>2026-01-06T12:39:14Z</updated>
+          <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2601.00470" type="application/atom+xml"/>
+          <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+          <opensearch:totalResults>1</opensearch:totalResults>
+          <opensearch:startIndex>0</opensearch:startIndex>
+          <entry>
+            <id>http://arxiv.org/abs/2601.00470v1</id>
+            <title>Betelgeuse: Detection of the Expanding Wake of the Companion Star</title>
+            <updated>2026-01-01T20:56:05Z</updated>
+            <link href="https://arxiv.org/abs/2601.00470v1" rel="alternate" type="text/html"/>
+            <link href="https://arxiv.org/pdf/2601.00470v1" rel="related" type="application/pdf" title="pdf"/>
+            <summary>Recent analyses conclude that Betelgeuse, a red supergiant star (HD 39801), likely has a companion object with a period of about 2000 days orbiting at only 2.3 stellar radii, deep in the chromosphere of the supergiant. A probable detection of such a companion, named Siwarha, has just occurred from speckle imaging. This study finds that Betelgeuse spectra in the optical region and ultraviolet exhibit signatures of variable circumstellar absorption and chromospheric outflows. These variations are consistent with the ~ 2000-day period of the companion object. Circumstellar absorption evident in optical Mn I lines, and mass outflow marked by ultraviolet Fe II, Si I, and Mg I lines increase after the transit of the companion across the disk of Betelgeuse. Following the eclipse of the companion, the absorption and outflow slowly decrease in advance of the next transit. The occurrence and variation of this plasma appear consistent with the presence of a trailing and expanding wake caused by a companion star orbiting within the atmosphere of Betelgeuse.</summary>
+            <category term="astro-ph.SR" scheme="http://arxiv.org/schemas/atom"/>
+            <category term="physics.space-ph" scheme="http://arxiv.org/schemas/atom"/>
+            <published>2026-01-01T20:56:05Z</published>
+            <arxiv:comment>20 pages + 1 appendix, 9 figures, accepted by ApJ</arxiv:comment>
+            <arxiv:primary_category term="astro-ph.SR"/>
+            <author>
+              <name>Andrea K. Dupree</name>
+              <arxiv:affiliation>Center for Astrophysics | Harvard &amp; Smithsonian, Cambridge, USA</arxiv:affiliation>
+            </author>
+            <author>
+              <name>Paul I. Cristofari</name>
+              <arxiv:affiliation>Center for Astrophysics | Harvard &amp; Smithsonian, Cambridge, USA</arxiv:affiliation>
+              <arxiv:affiliation>Leiden Observatory, Leiden, The Netherlands</arxiv:affiliation>
+            </author>
+            <author>
+              <name>Morgan MacLeod</name>
+              <arxiv:affiliation>Center for Astrophysics | Harvard &amp; Smithsonian, Cambridge, USA</arxiv:affiliation>
+            </author>
+            <author>
+              <name>Kateryna Kravchenko</name>
+              <arxiv:affiliation>Max Planck Institute for Extraterrestrial Physics, Garching, Germany</arxiv:affiliation>
+            </author>
+          </entry>
+        </feed>
+  recorded_at: Tue, 06 Jan 2026 12:39:14 GMT
+recorded_with: VCR 6.4.0

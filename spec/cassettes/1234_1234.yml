@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://export.arxiv.org/api/query?id_list=1234.1234
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - export.arxiv.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '692'
+      X-Cloud-Trace-Context:
+      - a23e3061bfc89445249986d511ee0102
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Server:
+      - Google Frontend
+      Via:
+      - 1.1 varnish, 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '454'
+      Date:
+      - Tue, 30 Dec 2025 01:13:36 GMT
+      X-Served-By:
+      - cache-lga21920-LGA, cache-lga21940-LGA, cache-fra-etou8220111-FRA
+      X-Cache:
+      - MISS, MISS, HIT
+      X-Cache-Hits:
+      - 0, 0, 0
+      X-Timer:
+      - S1771895616.497154,VS0,VE1
+      Strict-Transport-Security:
+      - max-age=300
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='UTF-8'?>
+        <feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+          <id>https://arxiv.org/api/0ddwI4azApTyt+R/OoB1MY+J9ck</id>
+          <title>arXiv Query: search_query=&amp;id_list=1234.1234&amp;start=0&amp;max_results=10</title>
+          <updated>2025-12-30T01:06:01Z</updated>
+          <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=1234.1234" type="application/atom+xml"/>
+          <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+          <opensearch:totalResults>0</opensearch:totalResults>
+          <opensearch:startIndex>0</opensearch:startIndex>
+        </feed>
+  recorded_at: Tue, 30 Dec 2025 01:13:36 GMT
+recorded_with: VCR 6.4.0
