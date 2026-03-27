@@ -72,6 +72,18 @@ RSpec.describe Arxivarius do
       it 'raises an error if the paper has an incorrectly formatted id' do
         expect { Arxivarius.get('cond-mat0709123') }.to raise_error(Arxivarius::Error::MalformedId)
       end
+
+      it 'raises an error on HTTP 429 rate limit', vcr: 'rate_limit_429' do
+        expect { Arxivarius.get('2601.00470') }.to raise_error(
+          Arxivarius::Error::ApiError, /429.*Rate exceeded/
+        )
+      end
+
+      it 'raises an error on HTTP 500 server error', vcr: 'server_error_500' do
+        expect { Arxivarius.get('2601.00470') }.to raise_error(
+          Arxivarius::Error::ApiError, /500.*Internal Server Error/
+        )
+      end
     end
   end
 end

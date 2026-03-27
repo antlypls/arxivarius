@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://export.arxiv.org/api/query?id_list=2601.00470
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - export.arxiv.org
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Content-Type:
+      - text/plain
+      Retry-After:
+      - '30'
+    body:
+      encoding: UTF-8
+      string: 'Rate exceeded.'
+  recorded_at: Tue, 30 Dec 2025 01:13:36 GMT
+recorded_with: VCR 6.4.0

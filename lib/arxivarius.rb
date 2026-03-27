@@ -19,6 +19,7 @@ module Arxivarius
   module Error
     class PaperNotFound < StandardError; end
     class MalformedId < StandardError; end
+    class ApiError < StandardError; end
   end
 
   # ArXiv uses two ID formats:
@@ -38,8 +39,7 @@ module Arxivarius
 
       id = normalize_legacy_id(id)
 
-      url = URI("https://export.arxiv.org/api/query?id_list=#{id}")
-      response = ::Nokogiri::XML(Net::HTTP.get(url)).remove_namespaces!
+      response = ::Nokogiri::XML(fetch_xml(id)).remove_namespaces!
       paper = Arxivarius::Paper.parse(response.to_s, single: true)
 
       # Paper is nil when the API returns no <entry> for the given ID.
@@ -69,6 +69,18 @@ module Arxivarius
 
     def legacy_url?(identifier)
       identifier.match?(LEGACY_URL_FORMAT)
+    end
+
+    def fetch_xml(id)
+      url = URI("https://export.arxiv.org/api/query?id_list=#{id}")
+      response = Net::HTTP.get_response(url)
+
+      unless response.is_a?(Net::HTTPSuccess)
+        message = "ArXiv API returned #{response.code}: #{response.body&.strip}"
+        raise Arxivarius::Error::ApiError, message
+      end
+
+      response.body
     end
 
     # The arXiv API no longer resolves subcategory legacy IDs.

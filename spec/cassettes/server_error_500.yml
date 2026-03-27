@@ -1,0 +1,29 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://export.arxiv.org/api/query?id_list=2601.00470
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - export.arxiv.org
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Content-Type:
+      - text/plain
+    body:
+      encoding: UTF-8
+      string: 'Internal Server Error'
+  recorded_at: Tue, 30 Dec 2025 01:13:36 GMT
+recorded_with: VCR 6.4.0
