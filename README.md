@@ -27,6 +27,24 @@ Pass any arXiv ID to `Arxivarius.get`:
 paper = Arxivarius.get('2601.00470')
 ```
 
+### Data sources
+
+By default the gem queries the arXiv Atom API (`export.arxiv.org`). That host
+has been unstable lately and sometimes responds with `429 Rate exceeded`
+(`Arxivarius::Error::ApiError`). When it does, you can fall back to scraping the
+public abstract page (`arxiv.org/abs/...`) instead:
+
+```ruby
+Arxivarius.get('2601.00470')                # arXiv API (default)
+Arxivarius.get('2601.00470', source: :api)  # arXiv API, explicitly
+Arxivarius.get('2601.00470', source: :web)  # scrape the abstract page
+```
+
+Both sources return the same `Paper` object, so the rest of the API below works
+unchanged. The web source recovers every field the API does **except author
+affiliations**, which the abstract page does not list (`author.affiliations`
+is `[]`).
+
 All common ID formats work:
 
 ```ruby

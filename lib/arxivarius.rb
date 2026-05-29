@@ -14,6 +14,7 @@ require 'arxivarius/author'
 require 'arxivarius/link'
 require 'arxivarius/category'
 require 'arxivarius/paper'
+require 'arxivarius/web_source'
 
 module Arxivarius
   module Error
@@ -32,23 +33,35 @@ module Arxivarius
   ID_FORMAT = /^#{CURRENT_URL_FORMAT}/
 
   class << self
-    def get(identifier)
+    def get(identifier, source: :api)
       id = parse_arxiv_identifier(identifier)
 
       raise Arxivarius::Error::MalformedId, 'Paper ID format is invalid' unless valid_id?(id)
 
       id = normalize_legacy_id(id)
 
-      response = ::Nokogiri::XML(fetch_xml(id)).remove_namespaces!
-      paper = Arxivarius::Paper.parse(response.to_s, single: true)
+      paper = fetch_paper(id, source)
 
-      # Paper is nil when the API returns no <entry> for the given ID.
+      # Paper is nil when the source returns no entry for the given ID.
       raise Arxivarius::Error::PaperNotFound, "Paper #{id} doesn't exist on arXiv" unless paper&.title
 
       paper
     end
 
     private
+
+    def fetch_paper(id, source)
+      case source
+      when :api then fetch_via_api(id)
+      when :web then WebSource.fetch(id)
+      else raise ArgumentError, "Unknown source: #{source.inspect}"
+      end
+    end
+
+    def fetch_via_api(id)
+      response = ::Nokogiri::XML(fetch_xml(id)).remove_namespaces!
+      Arxivarius::Paper.parse(response.to_s, single: true)
+    end
 
     def parse_arxiv_identifier(identifier)
       if valid_url?(identifier)

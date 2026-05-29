@@ -64,6 +64,22 @@ RSpec.describe Arxivarius do
       end
     end
 
+    context 'when selecting a source' do
+      it 'uses the API by default', vcr: '2601.00470' do
+        expect(Arxivarius.get('2601.00470')).to fetch('Betelgeuse: Detection of the Expanding Wake of the Companion Star')
+      end
+
+      it 'scrapes the abstract page when source: :web', vcr: 'web_2601.00470' do
+        expect(Arxivarius.get('2601.00470', source: :web)).to fetch('Betelgeuse: Detection of the Expanding Wake of the Companion Star')
+      end
+
+      it 'raises ArgumentError for an unknown source' do
+        expect { Arxivarius.get('2601.00470', source: :bogus) }.to raise_error(
+          ArgumentError, /Unknown source/
+        )
+      end
+    end
+
     context 'when something goes wrong' do
       it 'raises an error if the paper cannot be found on arXiv', vcr: '1234.1234' do
         expect { Arxivarius.get('1234.1234') }.to raise_error(Arxivarius::Error::PaperNotFound)
